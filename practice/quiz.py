@@ -30,3 +30,17 @@ for num in num_list:
         
 print(max_num)
 print(max(num_list))   # max()를 사용하면 간단하다
+
+
+# Q5. 주민번호를 입력받아 성별을 출력하는 함수 만들기
+def check_gender(pin):
+    gender = int(pin.split('-')[1][0])
+    if gender == 1 or gender == 3:
+        print('남성')
+    elif gender ==2 or gender == 4:
+        print('여성')
+    else:
+        print ('잘못 입력하셨습니다.')
+
+my_pin = '2000101-4012345'
+check_gender(my_pin)
