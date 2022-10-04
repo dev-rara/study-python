@@ -52,4 +52,4 @@ student_b = ['물리1','수학1','미술','화학2','체육']
 
 a_set = set(student_a)
 b_set = set(student_b)
-print(list(a_set.difference(b_set)))
+print(a_set - b_set)
