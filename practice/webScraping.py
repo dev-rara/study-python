@@ -21,6 +21,6 @@ for movie in movies:
         doc = {
             'title': title,
             'rank': rank,
-            'start': star
+            'star': star
         }
         db.movies.insert_one(doc)
