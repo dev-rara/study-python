@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, jsonify
 app = Flask(__name__)
 
 from pymongo import MongoClient
-client = MongoClient('mongodb+srv://test_user:rhaehfdl@cluster0.u1zjohc.mongodb.net/Cluster0?retryWrites=true&w=majority')
+client = MongoClient('mongodb+srv://test_user:sparta@cluster0.u1zjohc.mongodb.net/Cluster0?retryWrites=true&w=majority')
 db = client.dbsparta
 
 @app.route('/')
@@ -31,6 +31,13 @@ def bucket_done():
     db.bucket.update_one({'num':int(num_receive)}, {'$set':{'done':1}})
     
     return jsonify({'msg': '버킷 완료!'})
+
+@app.route("/bucket/cancle", methods=["POST"])
+def bucket_cancle():
+    num_receive = request.form['num_give']
+    db.bucket.update_one({'num': int(num_receive)}, {'$set': {'done': 0}})
+
+    return jsonify({'msg': '버킷 취소'})
 
 @app.route("/bucket", methods=["GET"])
 def bucket_get():
